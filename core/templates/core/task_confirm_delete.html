@@ -1,0 +1,67 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Delete Task - TaskMaster{% endblock %}
+
+{% block extra_css %}
+<style>
+    .delete-container {
+        max-width: 500px;
+        margin: 4rem auto;
+        text-align: center;
+    }
+
+    .warning-icon {
+        width: 64px;
+        height: 64px;
+        background: rgba(239, 68, 68, 0.1);
+        color: var(--danger);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        font-size: 2rem;
+    }
+
+    .task-preview {
+        background: rgba(15, 23, 42, 0.3);
+        border: 1px solid var(--border);
+        border-radius: 1rem;
+        padding: 1.5rem;
+        margin: 1.5rem 0 2rem;
+    }
+
+    .task-preview h3 {
+        margin-bottom: 0.5rem;
+        color: var(--text);
+    }
+
+    .task-preview p {
+        color: var(--text-muted);
+        font-size: 0.9rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="delete-container animate-in">
+    <div class="card">
+        <div class="warning-icon">!</div>
+        <h1>Are you sure?</h1>
+        <p style="color: var(--text-muted);">You are about to delete this task. This action cannot be undone.</p>
+        
+        <div class="task-preview">
+            <h3>{{ task.title }}</h3>
+            <p>{{ task.description|truncatewords:20|default:"No description" }}</p>
+        </div>
+
+        <form method="post">
+            {% csrf_token %}
+            <div style="display: flex; gap: 1rem;">
+                <button type="submit" class="btn btn-danger" style="flex: 1;">Yes, Delete Task</button>
+                <a href="{% url 'task_list' %}" class="btn btn-outline" style="flex: 1;">No, Keep it</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
