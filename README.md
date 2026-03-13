@@ -8,6 +8,9 @@ A modern, premium CRUD (Create, Read, Update, Delete) application built with Dja
 - **Form Validation**: robust data handling with Django Forms.
 - **Clean Architecture**: Organized into separate apps and templates.
 
+## 📸 Application Screenshot
+![TaskMaster Output](assets/output.png)
+
 ## 🛠️ Technology Stack
 - **Backend**: Django 6.0 (Python)
 - **Frontend**: HTML5, Vanilla CSS (Outfit Google Font)
